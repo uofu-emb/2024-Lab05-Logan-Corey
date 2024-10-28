@@ -5,8 +5,14 @@
 int toggle = 1;
 void irq_callback(uint gpio, uint32_t event_mask)
 {
+    // Busy wait
+    for (int i = 0; i < 250000; i++) {
+        __asm__ volatile ("" : : : "memory"); // Prevent from optimizing out
+    }
+
     if (gpio != IN_PIN) return;
     toggle = !toggle;
+
     if (event_mask & GPIO_IRQ_EDGE_RISE) {
         gpio_put(OUT_PIN, true);
     } else if (event_mask & GPIO_IRQ_EDGE_FALL) {

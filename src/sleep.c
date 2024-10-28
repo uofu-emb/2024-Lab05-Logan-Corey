@@ -12,6 +12,12 @@ int main(void)
     while (true) {
         toggle = !toggle;
         gpio_put(OUT_PIN, toggle);
+
+        // Busy wait
+        for (int i = 0; i < 100000; i++) {
+            __asm__ volatile ("" : : : "memory"); // Prevent from optimizing out
+        }
+
         sleep_ms(DELAY_MS);
     }
 }
