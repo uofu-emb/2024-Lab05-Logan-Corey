@@ -6,7 +6,7 @@ int toggle = 1;
 void irq_callback(uint gpio, uint32_t event_mask)
 {
     // Busy wait
-    for (int i = 0; i < 250000; i++) {
+    for (int i = 0; i < 25000; i++) {
         __asm__ volatile ("" : : : "memory"); // Prevent from optimizing out
     }
 
