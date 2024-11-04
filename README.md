@@ -17,5 +17,5 @@ As expected, timer.c was not affected by the busy-wait loop.
 
 # Activity 2
 
-Trigger delay - 1.98 $\\mu$
+Trigger delay - 1.98 $\\mu$ s
 Trigger delay with busy-wait loop - 1.20204 ms
